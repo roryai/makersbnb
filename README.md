@@ -6,7 +6,7 @@
 
 As a user
 So I can choose a space for a fun night away
-I want to see a list of properties
+I want to see a list of spaces
 
 As a user
 So I can have a fun night away
@@ -29,12 +29,12 @@ So I can stay updated on what's available
 I want the availability data to be updated once a booking is accepted
 
 As an owner or user
-So that I can list my space
+So that I can relevant information
 I want to be able to sign up
 
 As an owner
 So that I can make my property visible on site
-I want to be able to list the name of my space
+I want to be able to create a new listing with the name of my space
 
 As an owner
 So that I can make my property visible on site
@@ -45,12 +45,12 @@ So that I can make my property visible on site
 I want to be able to list the price per night of my space
 
 As an owner
-So I can make loads of money
-I want to be able to list multiple spaces
-
-As an owner
 So I can plan my life
 I want to be able to specify what dates my space is available
+
+As an owner
+So I can make loads of money
+I want to be able to list multiple spaces
 
 As an owner
 So I can retain control over my space
