@@ -5,7 +5,9 @@
 #### USER STORIES
 
 As a user
+
 So I can choose a space for a fun night away
+
 I want to see a list of spaces
 
 As a user
