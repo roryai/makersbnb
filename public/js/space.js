@@ -1,7 +1,11 @@
-function Space(){
+function Space(address, description, price){
+ this.address = address;
+ this.desc = description;
+ this.price = price ;
+}
 
-};
+var listOfSpaces = [];
 
-Space.prototype.returnAddress = function(){
-  return 'Windsor Castle';
+makeNewSpace = function (address, description, price) {
+
 };
