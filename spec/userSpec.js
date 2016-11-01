@@ -27,5 +27,10 @@ it('should allow a user to have a space', function () {
   expect(user.spaces).toEqual(['space']);
 });
 
+it('can add a trip to their trips', function () {
+  user.addTrip("my trip");
+  expect(user.trips).toEqual(["my trip"]);
+});
+
 
 });

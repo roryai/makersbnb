@@ -4,9 +4,13 @@ function User (fullName, userName, email, password) {
   this.email = email;
   this.password = password;
   this.spaces = [];
-  this.bookings = [];
+  this.trips = [];
 }
 
 User.prototype.addSpace = function (space) {
   this.spaces.push(space);
+};
+
+User.prototype.addTrip = function (booking) {
+  this.trips.push(booking);
 };
