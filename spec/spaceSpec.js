@@ -3,22 +3,30 @@ describe('Space', function(){
  var space;
 
  beforeEach(function(){
-   space = new Space();
+   space = new Space("Dandy Cock Inn", "45 Cock Way", 'For all your dandy cock needs!', 8, "user");
+ });
+
+
+ it('should allow an name to be added', function(){
+   expect(space.spaceName).toEqual('Dandy Cock Inn');
  });
 
  it('should allow an address to be added', function(){
-   space.addAddress('Dandy Cock Inn');
-   expect(space.address).toEqual(['Dandy Cock Inn']);
+   expect(space.address).toEqual("45 Cock Way");
  });
 
  it('should allow a short description to be added', function(){
-   space.addDesp('For all your dandy cock needs!');
-   expect(space.desp).toEqual(['For all your dandy cock needs!']);
+   expect(space.desc).toEqual('For all your dandy cock needs!');
  });
 
- it('should allow an address to be added', function(){
-   space.addPrice('£7.50');
-   expect(space.price).toEqual(['£7.50']);
+ it('should allow a price to be added', function(){
+   expect(space.price).toEqual(8);
  });
+
+ it('should add the correct dates to availability', function(){
+   space.addDates(2,5);
+   expect(space.availability).toEqual([2,3,4,5]);
+ });
+
 
 });
