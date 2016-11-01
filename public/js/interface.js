@@ -2,17 +2,14 @@
 
 $( document ).ready(function () {
 
-  var space = new Space();
 
-  $("#1").text(space.returnAddress());
-  $("#2").text(space.returnAddress());
-  $("#3").text(space.returnAddress());
-  $("#4").text(space.returnAddress());
-  $("#5").text(space.returnAddress());
-
-
-
-
-
+  $('#addSpace').click(function(){
+    var name = $('#name').val();
+    var address = $('#address').val();
+    var description = $('#description').val();
+    var price = $('#price').val();
+    var space = new Space(name, address, description, price, "Judy");
+    console.log(space);
+  });
 
 });
