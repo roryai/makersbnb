@@ -9,8 +9,21 @@ class Makersbnb < Sinatra::Base
     erb :sign_up
   end
 
+  post '/sign-up' do
+    #database stuff - creates user in database
+    redirect '/'
+  end
+
   get '/log-in' do
     erb :log_in
+  end
+
+  post '/log-in' do
+    redirect '/'
+  end
+
+  get '/property' do
+    erb :property
   end
 
   # start the server if ruby file executed directly
