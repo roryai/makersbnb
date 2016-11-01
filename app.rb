@@ -7,7 +7,7 @@ class Makersbnb < Sinatra::Base
 
   get '/sign-up' do
     erb :sign_up
-  end
+  end 
 
   post '/sign-up' do
     #database stuff - creates user in database
