@@ -9,7 +9,6 @@ $( document ).ready(function () {
     var password = $('#password').val();
     var user = new User(fullName, userName, email, password);
     window.location.href = "http://localhost:4567";
-    console.log(user);
 
   });
 
