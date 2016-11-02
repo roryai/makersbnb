@@ -22,7 +22,7 @@ $( document ).ready(function () {
         var password = "kath";
 
         if ((loginUserName == username) && (loginPassword == password)) {
-          alert ("success")
+          alert ("success");
           window.location.href = "http://localhost:4567/add-space";
             return true;
         }
@@ -41,6 +41,11 @@ $( document ).ready(function () {
     var space = new Space(name, address, description, price, "user name here");
     // user101.addSpace(space)
     console.log(space);
+  });
+
+  $('#bookMe').click(function(){
+    alert ("You're on the way to booking!");
+    window.location.href = "http://localhost:4567";
   });
 
 });
