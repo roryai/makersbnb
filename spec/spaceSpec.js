@@ -23,15 +23,24 @@ describe('Space', function(){
    expect(space.price).toEqual(8);
  });
 
- it('should add the correct dates to availability', function() {
-   space.addDates(2,5);
-   expect(space.availability).toEqual([2,3,4,5]);
+ it('should make specific dates unavailable', function() {
+   var d = new Date(2017, 1, 14);
+   var e = new Date(2017, 1, 18);
+   var f = new Date(2017, 1, 15);
+   var g = new Date(2017, 1, 16);
+   space.addDates(d,e);
+   console.log(space.availability)
+   space.removeDates(f,g);
+   console.log(space.availability)
+   expect(space.availability).toEqual([d,e]);
  });
 
- it('should make specific dates unavailable', function() {
-   space.addDates(2,5);
-   space.removeDates(3,4);
-   expect(space.availability).toEqual([2,5]);
+ it('should be able to add real dates to the array', function() {
+   var d = new Date(2017, 1, 14);
+   var e = new Date(2017,1,15);
+   var f = new Date(2017, 1, 16);
+   space.addDates(d,f);
+  expect(space.availability).toEqual([d,e,f])
  });
 
 });
