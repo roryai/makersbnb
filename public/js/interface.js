@@ -23,4 +23,25 @@ $( document ).ready(function () {
 
   });
 
+  $('#loginButton').click(function(){
+    // stop.preventDefault();
+    var loginUserName = $('#loginUserName').val();
+    var  loginPassword = $('#loginPassword').val();
+
+
+
+        var username = "rory";
+        var password = "kath";
+
+        if ((loginUserName == username) && (loginPassword == password)) {
+          alert ("success")
+            return true;
+        }
+        else {
+            alert ("Login was unsuccessful, please check your username and password");
+            return false;
+        }
+
+  });
+
 });
