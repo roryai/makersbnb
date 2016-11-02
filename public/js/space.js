@@ -9,15 +9,13 @@ function Space(name, address, description, price, owner){
 
 Space.prototype.addDates = function (availStart,availEnd) {
   for (var i = new Date(availStart); i<= new Date(availEnd); i.setDate(i.getDate() + 1)) {
-    this.availability.push(new Date (i));
+    this.availability.push(new Date (i).getTime());
   }
 };
 
 Space.prototype.removeDates = function (availStart,availEnd) {
   for (var i = new Date(availStart); i<= new Date(availEnd); i.setDate(i.getDate() + 1)) {
-    console.log(i)
-    var index = this.availability.indexOf(i.valueOf());
-    console.log(index)
+    var index = this.availability.indexOf(i.getTime());
     this.availability.splice(index,1);
   }
 };

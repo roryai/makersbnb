@@ -28,11 +28,10 @@ describe('Space', function(){
    var e = new Date(2017, 1, 18);
    var f = new Date(2017, 1, 15);
    var g = new Date(2017, 1, 16);
+   var i = new Date(2017, 1, 17);
    space.addDates(d,e);
-   console.log(space.availability)
    space.removeDates(f,g);
-   console.log(space.availability)
-   expect(space.availability).toEqual([d,e]);
+   expect(space.availability).toEqual([d.getTime(), i.getTime(), e.getTime()]);
  });
 
  it('should be able to add real dates to the array', function() {
@@ -40,7 +39,7 @@ describe('Space', function(){
    var e = new Date(2017,1,15);
    var f = new Date(2017, 1, 16);
    space.addDates(d,f);
-  expect(space.availability).toEqual([d,e,f])
+   expect(space.availability).toEqual([d.getTime(), e.getTime(), f.getTime()])
  });
 
 });
