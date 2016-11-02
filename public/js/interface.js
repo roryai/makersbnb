@@ -43,9 +43,4 @@ $( document ).ready(function () {
     console.log(space);
   });
 
-  $('#bookMe').click(function(){
-    alert ("You're on the way to booking!");
-    window.location.href = "http://localhost:4567";
-  });
-
 });

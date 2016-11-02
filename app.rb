@@ -26,8 +26,8 @@ class Makersbnb < Sinatra::Base
     erb :add_space
   end
 
-  get '/property' do
-    erb :property
+  get '/space' do
+    erb :space
   end
 
   # start the server if ruby file executed directly
