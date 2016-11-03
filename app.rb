@@ -40,12 +40,17 @@ class Makersbnb < Sinatra::Base
     erb :space
   end
 
+
   get '/test.json' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
     hotel = User.first.full_name
     p User.first
     { spaceName: hotel }.to_json
+  end
+
+  get '/user' do
+    erb :user
   end
 
   # start the server if ruby file executed directly
