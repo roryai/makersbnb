@@ -1,6 +1,12 @@
+ENV['RACK_ENV'] ||= 'development'
+require 'json'
 require 'sinatra/base'
+require './models/data_mapper_setup.rb'
 
 class Makersbnb < Sinatra::Base
+  enable :sessions
+  set :session_secret, 'super secret'
+
   get '/' do
     erb :index
   end
@@ -10,7 +16,11 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/sign-up' do
-    #database stuff - creates user in database
+    user = User.create(full_name: params[:Name],
+    user_name: params[:Username],
+    email: params[:Email],
+    password: params[:Password])
+    p user
     redirect '/'
   end
 
@@ -28,6 +38,15 @@ class Makersbnb < Sinatra::Base
 
   get '/space' do
     erb :space
+  end
+
+
+  get '/test.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    hotel = User.first.full_name
+    p User.first
+    { spaceName: hotel }.to_json
   end
 
   get '/user' do
