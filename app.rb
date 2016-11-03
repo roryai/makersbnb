@@ -30,6 +30,10 @@ class Makersbnb < Sinatra::Base
     erb :space
   end
 
+  get '/user' do
+    erb :user
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
