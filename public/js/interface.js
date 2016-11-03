@@ -8,6 +8,7 @@ $( document ).ready(function () {
     var email = $('#email').val();
     var password = $('#password').val();
     var user = new User(fullName, userName, email, password);
+    console.log(user);
     window.location.href = "http://localhost:4567";
 
   });

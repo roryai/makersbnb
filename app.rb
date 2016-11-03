@@ -3,6 +3,9 @@ require 'sinatra/base'
 require './models/data_mapper_setup.rb'
 
 class Makersbnb < Sinatra::Base
+  enable :sessions
+  set :session_secret, 'super secret'
+
   get '/' do
     erb :index
   end
@@ -12,7 +15,11 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/sign-up' do
-    #database stuff - creates user in database
+    user = User.create(full_name: params[:Name],
+    user_name: params[:Username],
+    email: params[:Email],
+    password: params[:Password])
+    p user
     redirect '/'
   end
 

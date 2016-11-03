@@ -7,5 +7,6 @@ require_relative './user'
 require_relative './space'
 require_relative './bookings'
 
+DataMapper::Logger.new($stdout, :debug)
 DataMapper.finalize
 DataMapper.auto_upgrade!
