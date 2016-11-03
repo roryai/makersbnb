@@ -1,4 +1,5 @@
 ENV['RACK_ENV'] ||= 'development'
+require 'json'
 require 'sinatra/base'
 require './models/data_mapper_setup.rb'
 
@@ -37,6 +38,14 @@ class Makersbnb < Sinatra::Base
 
   get '/space' do
     erb :space
+  end
+
+  get '/test.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    hotel = User.first.full_name
+    p User.first
+    { spaceName: hotel }.to_json
   end
 
   # start the server if ruby file executed directly
