@@ -9,7 +9,6 @@ $( document ).ready(function () {
     var password = $('#password').val();
     var user = new User(fullName, userName, email, password);
     window.location.href = "http://localhost:4567";
-    console.log(user);
 
   });
 
@@ -41,11 +40,6 @@ $( document ).ready(function () {
     var space = new Space(name, address, description, price, "user name here");
     // user101.addSpace(space)
     console.log(space);
-  });
-
-  $('#bookMe').click(function(){
-    alert ("You're on the way to booking!");
-    window.location.href = "http://localhost:4567";
   });
 
 });
