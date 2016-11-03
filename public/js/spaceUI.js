@@ -2,6 +2,8 @@ $( document ).ready(function () {
 
   var startDate
   var endDate
+  var availStart
+  var availEnd
   var space = new Space("Dandy Cock Inn", "45 Cock Way", 'For all your dandy cock needs!', 8, "user");
   var user = new User('Bob', 'bob123', 'bob@bob.com', 'bob321');
   var booking
@@ -9,6 +11,11 @@ $( document ).ready(function () {
 
   function makeBooking() {
     booking = new Booking(user, space, startDate, endDate);
+  };
+
+  function makeAvailable(startDate, endDate) {
+    space.addDates(startDate, endDate);
+    console.log(space);
   };
 
   $(".spaceName").text(space.spaceName);
@@ -68,10 +75,50 @@ $( document ).ready(function () {
     }
   });
 
+  $( function() {
+    var dateFormat = "dd/mm/yy",
+      from = $( "#avFrom" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+          availStart = $('#from').datepicker('getDate');
+        }),
+
+      to = $( "#avTo" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+        availEnd = $('#to').datepicker('getDate');
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+  });
+
   $('#bookMe').click(function(){
     makeBooking();
     alert ("Hi there " + user.fullName + " you have booked " + space.spaceName);
-    // window.location.href = "http://localhost:4567";
+    window.location.href = "/user";
   });
+
+  $('#availMe').click(function(){
+    makeAvailable();
+    alert ("Hi there, your space has been made available for bookings")
+  })
 
 });
