@@ -8,9 +8,12 @@ $( document ).ready(function () {
 
   function makeBooking() {
     booking = new Booking(user, space, startDate, endDate);
-    console.log(booking)
   };
 
+  $(".spaceName").text(space.spaceName);
+  $(".address").text(space.address);
+  $(".desc").text(space.desc);
+  $(".price").text(space.price);
 
 
   $( function() {
@@ -47,9 +50,6 @@ $( document ).ready(function () {
       return date;
     }
   });
-
-  // console.log(date);
-  // console.log();
 
   $('#bookMe').click(function(){
     makeBooking();
