@@ -4,9 +4,12 @@ require_relative './data_mapper_setup.rb'
 class User
   include DataMapper::Resource
 
+  has n, :spaces, :through => Resource
+  has n, :bookings, :through => Resource
+
   property :id, Serial
-  property :fullname, String
-  property :username, String
+  property :full_name, String
+  property :user_name, String
   property :email, String
   property :password_digest, Text
 
