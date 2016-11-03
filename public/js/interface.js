@@ -28,8 +28,8 @@ $( document ).ready(function () {
     }
   })();
 
+  $("#0").click(function(){link("test");});
   $("#1").click(function(){link("test");});
-  $("#2").click(function(){link("test");});
 
   var link = function(name) {
     window.location.href = "/space";

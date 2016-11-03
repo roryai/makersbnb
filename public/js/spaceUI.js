@@ -5,6 +5,7 @@ $( document ).ready(function () {
   var space = new Space("Dandy Cock Inn", "45 Cock Way", 'For all your dandy cock needs!', 8, "user");
   var user = new User('Bob', 'bob123', 'bob@bob.com', 'bob321');
   var booking
+  space.addDates(new Date(2017,0,1), new Date(2017,4,1));
 
   function makeBooking() {
     booking = new Booking(user, space, startDate, endDate);
@@ -22,7 +23,15 @@ $( document ).ready(function () {
         .datepicker({
           defaultDate: "+1w",
           changeMonth: true,
-          numberOfMonths: 3
+          numberOfMonths: 3,
+          beforeShowDay: function (a) {
+            var d = a.getFullYear() + '-' + (a.getMonth() + 1) + '-' + a.getDate();
+            if ($.inArray(new Date (d).getTime(), space.availability) !== -1) {
+                return [true, "", ""];
+            } else {
+              return [false, "", "disabled date"];
+            }
+        }
         })
         .on( "change", function() {
           to.datepicker( "option", "minDate", getDate( this ) );
@@ -32,7 +41,15 @@ $( document ).ready(function () {
       to = $( "#to" ).datepicker({
         defaultDate: "+1w",
         changeMonth: true,
-        numberOfMonths: 3
+        numberOfMonths: 3,
+        beforeShowDay: function (a) {
+          var d = a.getFullYear() + '-' + (a.getMonth() + 1) + '-' + a.getDate();
+          if ($.inArray(new Date (d).getTime(), space.availability) !== -1) {
+              return [true, "", ""];
+          } else {
+            return [false, "", "disabled date"];
+          }
+      }
       })
       .on( "change", function() {
         from.datepicker( "option", "maxDate", getDate( this ) );
