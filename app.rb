@@ -1,4 +1,6 @@
+ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
+require './models/data_mapper_setup.rb'
 
 class Makersbnb < Sinatra::Base
   get '/' do
