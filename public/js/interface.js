@@ -55,8 +55,8 @@ $( document ).ready(function () {
     var loginUserName = $('#loginUserName').val();
     var  loginPassword = $('#loginPassword').val();
 
-        var username = "rory";
-        var password = "kath";
+        var username = $('#loginUserName').val();
+        var password = $('#loginPassword').val();
 
         if ((loginUserName == username) && (loginPassword == password)) {
           alert ("success");
