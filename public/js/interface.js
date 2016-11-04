@@ -6,6 +6,15 @@ $( document ).ready(function () {
   var space2 = new Space("Dandy Cock Inn", "45 Cock Way", 'For all your dandy cock needs!', 8, "user");
   var spaces = [];
   spaces.push(space1, space2);
+  var fullName
+
+  $.get  ('http://localhost:4567/test.json', function (data){
+    fullName = data.fullName;
+   $(".welcome").text(fullName);
+ });
+
+ console.log(fullName);
+
 
   function addBoxes(space, id) {
     var div = document.createElement('div'),
@@ -46,7 +55,7 @@ $( document ).ready(function () {
     var password = $('#password').val();
     var user = new User(fullName, userName, email, password);
     console.log(user);
-    window.location.href = "http://localhost:4567";
+    window.location.href = "/";
 
   });
 
@@ -60,7 +69,7 @@ $( document ).ready(function () {
 
         if ((loginUserName == username) && (loginPassword == password)) {
           alert ("success");
-          window.location.href = "http://localhost:4567/add-space";
+          window.location.href = "/";
             return true;
         }
         else {

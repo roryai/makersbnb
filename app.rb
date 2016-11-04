@@ -44,9 +44,9 @@ class Makersbnb < Sinatra::Base
   get '/test.json' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
-    hotel = User.first.full_name
+    user = User.first.full_name
     p User.first
-    { spaceName: hotel }.to_json
+    { fullName: user }.to_json
   end
 
   get '/user' do
