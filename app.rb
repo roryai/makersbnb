@@ -27,8 +27,6 @@ class Makersbnb < Sinatra::Base
     user_name: params[:Username],
     email: params[:Email],
     password: params[:Password])
-    @user.save
-    # password_confirmation: params[:password_confirmation])
     session[:user_id] = @user.id
     redirect '/'
   end
@@ -38,8 +36,10 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/log-in' do
-    @user = User.authenticate(params[:email], params[:password])
-    session[:user_id] = @user.id
+    user = User.authenticate(params[:username], params[:password])
+    user.nil? ? session[:user_id] = nil : session[:user_id] = user.id
+    p "HEEEELLOOOOOOO BOB!!!!!!!"
+    p session[:user_id]
     redirect '/'
   end
 
@@ -52,12 +52,11 @@ class Makersbnb < Sinatra::Base
   end
 
 
-  get '/test.json' do
+  get '/currentUser.json' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
-    user = User.first.full_name
-    p User.first
-    { fullName: user }.to_json
+    user = User.get(session[:user_id])
+    { user: user }.to_json
   end
 
   get '/user' do

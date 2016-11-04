@@ -8,12 +8,10 @@ $( document ).ready(function () {
   spaces.push(space1, space2);
   var fullName;
 
-  $.get  ('http://localhost:4567/test.json', function (data){
-    fullName = data.fullName;
+  $.get  ('/currentUser.json', function (data){
+    fullName = data.user.full_name;
    $(".welcome").text(fullName);
  });
-
- console.log(fullName);
 
 
   function addBoxes(space, id) {
