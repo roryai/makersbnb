@@ -4,10 +4,21 @@ $( document ).ready(function () {
   var endDate
   var availStart
   var availEnd
-  var space = new Space("Dandy Cock Inn", "45 Cock Way", 'For all your dandy cock needs!', 8, "user");
+  var space
   var user = new User('Bob', 'bob123', 'bob@bob.com', 'bob321');
   var booking
-  space.addDates(new Date(2017,0,1), new Date(2017,4,1));
+  // space.addDates(new Date(2017,0,1), new Date(2017,4,1));
+
+console.log("hello!")
+
+  $.get  ('/currentSpace.json', function (data){
+    space = new Space(data.space.space_name, data.space.address, data.space.desc, data.space.price, "user");
+    $(".spaceName").text(space.spaceName);
+    $(".address").text(space.address);
+    $(".desc").text(space.desc);
+    $(".price").text(space.price);
+ });
+
 
   function makeBooking() {
     booking = new Booking(user, space, startDate, endDate);
@@ -18,10 +29,7 @@ $( document ).ready(function () {
     console.log(space);
   };
 
-  $(".spaceName").text(space.spaceName);
-  $(".address").text(space.address);
-  $(".desc").text(space.desc);
-  $(".price").text(space.price);
+
 
 
   $( function() {

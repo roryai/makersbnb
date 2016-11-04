@@ -8,10 +8,10 @@ $( document ).ready(function () {
   spaces.push(space1, space2);
   var fullName;
 
-  $.get  ('http://localhost:4567/test.json', function (data){
-    fullName = data.fullName;
-   $(".welcome").text(fullName);
- });
+ //  $.get  ('http://localhost:4567/test.json', function (data){
+ //    fullName = data.fullName;
+ //   $(".welcome").text(fullName);
+ // });
 
  console.log(fullName);
 

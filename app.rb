@@ -38,8 +38,6 @@ class Makersbnb < Sinatra::Base
   post '/log-in' do
     user = User.authenticate(params[:username], params[:password])
     user.nil? ? session[:user_id] = nil : session[:user_id] = user.id
-    p "HEEEELLOOOOOOO BOB!!!!!!!"
-    p session[:user_id]
     redirect '/'
   end
 
@@ -47,16 +45,35 @@ class Makersbnb < Sinatra::Base
     erb :add_space
   end
 
+  post '/add-space' do
+    space = Space.create(space_name: params[:name], address: params[:address], desc: params[:description], price: params[:price], user_id: session[:user_id])
+    session[:space_id] = space.id
+    redirect '/space'
+  end
+
   get '/space' do
     erb :space
   end
-
 
   get '/currentUser.json' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
     user = User.get(session[:user_id])
     { user: user }.to_json
+  end
+
+  get '/currentSpace.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    space = Space.get(session[:space_id])
+    { space: space }.to_json
+  end
+
+  get '/allSpaces.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    spaces = Space.all
+    { spaces: spaces }.to_json
   end
 
   get '/user' do
