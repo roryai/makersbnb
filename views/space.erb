@@ -21,12 +21,12 @@
       <p>Price per night: &nbsp &nbsp £<span class="price"></span></p><br>
     </div>
 
-    <form name="bookMe" >
+    <form action='/space' method="post" name="bookMe">
       <label for="from">From</label>
       <input type="text" id="bookMeFrom" name="from">
       <label for="to">to</label>
       <input type="text" id="bookMeTo" name="to">
-      <input id="bookMe" type="button" value="Book me!">
+      <input id="bookMe" type="submit" value="Book me!">
     </form>
 
     <form name="setAvailability" >
@@ -34,7 +34,7 @@
       <input type="text" id="avFrom" name="from">
       <label for="to">to</label>
       <input type="text" id="avTo" name="to">
-      <input id="availMe" type="button" value="Make available!">
+      <input id="availMe" type="submit" value="Make available!">
     </form>
   </body>
 </html>

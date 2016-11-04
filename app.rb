@@ -11,6 +11,7 @@ class Makersbnb < Sinatra::Base
     def current_user
       @current_user ||=User.get(session[:user_id])
     end
+
   end
 
   get '/' do
@@ -27,6 +28,7 @@ class Makersbnb < Sinatra::Base
     user_name: params[:Username],
     email: params[:Email],
     password: params[:Password])
+    p @user
     session[:user_id] = @user.id
     redirect '/'
   end
@@ -38,8 +40,6 @@ class Makersbnb < Sinatra::Base
   post '/log-in' do
     user = User.authenticate(params[:username], params[:password])
     user.nil? ? session[:user_id] = nil : session[:user_id] = user.id
-    p "HEEEELLOOOOOOO BOB!!!!!!!"
-    p session[:user_id]
     redirect '/'
   end
 
@@ -48,7 +48,25 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/space' do
+    @booking = Booking.new
     erb :space
+  end
+
+  post '/space' do
+    @booking = Booking.create(start_date: params[:from],
+    end_date: params[:to],
+    confirmed: false,
+    space_id: 1)
+    # space_id: session[:space_id])
+    session[:booking_id] = @booking.id
+    redirect '/user'
+  end
+
+  get '/currentBooking.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    booking = Booking.get(session[:booking_id])
+    { booking: booking }.to_json
   end
 
 
