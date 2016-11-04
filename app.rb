@@ -53,6 +53,14 @@ class Makersbnb < Sinatra::Base
     redirect '/space'
   end
 
+  post '/showSpace' do
+    p params[:id]
+    p params[:id].to_i
+    session[:space_id] = params[:id].to_i
+    p session[:space_id]
+    erb :space
+  end
+
   get '/space' do
     @booking = Booking.new
     erb :space

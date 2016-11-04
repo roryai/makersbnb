@@ -17,10 +17,23 @@ $( document ).ready(function () {
    array = data.spaces;
    for (var i = 0; i < array.length; i++){
      space = new Space(array[i].space_name, array[i].address, array[i].desc, array[i].price, "user");
+     id = array[i].id
     //  spaces.push(space);
-     addBoxes(space, i);
-   };
- });
+     addBoxes(space, id);
+     $('#' + id).click(function(){
+       console.log("hello");
+       $.post('/showSpace?id=' + this.id);
+       console.log(this.id);
+     });
+     }
+   });
+ //   }
+ //  //  $("button").click(function() {
+ //  //    console.log("hello");
+ //  //    $.post('/showSpace',this.id);
+ //  //    console.log(this.id);
+ //  //  });
+ // });
 
 
   function addBoxes(space, id) {
@@ -29,6 +42,7 @@ $( document ).ready(function () {
     desc = document.createTextNode(space.desc);
     var btn = document.createElement('input');
     btn.setAttribute('type', 'button');
+    btn.setAttribute('name', 'button');
     btn.setAttribute('value', 'book now');
     btn.setAttribute('id', id);
     div.appendChild(txt);
@@ -37,6 +51,7 @@ $( document ).ready(function () {
     document.body.appendChild(div);
     $("div").last().addClass("box");
   }
+
 
   // (function () {
   //   for (var i=0; i<spaces.length; i++) {
