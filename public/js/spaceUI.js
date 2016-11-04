@@ -26,7 +26,7 @@ $( document ).ready(function () {
 
   $( function() {
     var dateFormat = "dd/mm/yy",
-      from = $( "#from" )
+      from = $( "#bookMeFrom" )
         .datepicker({
           defaultDate: "+1w",
           changeMonth: true,
@@ -42,10 +42,10 @@ $( document ).ready(function () {
         })
         .on( "change", function() {
           to.datepicker( "option", "minDate", getDate( this ) );
-          tripStart = $('#from').datepicker('getDate');
+          tripStart = $('#bookMeFrom').datepicker('getDate');
         }),
 
-      to = $( "#to" ).datepicker({
+      to = $( "#bookMeTo" ).datepicker({
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 3,
@@ -60,7 +60,7 @@ $( document ).ready(function () {
       })
       .on( "change", function() {
         from.datepicker( "option", "maxDate", getDate( this ) );
-        tripEnd = $('#to').datepicker('getDate');
+        tripEnd = $('#bookMeTo').datepicker('getDate');
       });
 
     function getDate( element ) {
@@ -85,7 +85,7 @@ $( document ).ready(function () {
         })
         .on( "change", function() {
           to.datepicker( "option", "minDate", getDate( this ) );
-          availStart = $('#from').datepicker('getDate');
+          availStart = $('#avFrom').datepicker('getDate');
         }),
 
       to = $( "#avTo" ).datepicker({
@@ -95,7 +95,7 @@ $( document ).ready(function () {
       })
       .on( "change", function() {
         from.datepicker( "option", "maxDate", getDate( this ) );
-        availEnd = $('#to').datepicker('getDate');
+        availEnd = $('#avTo').datepicker('getDate');
       });
 
     function getDate( element ) {
@@ -112,7 +112,7 @@ $( document ).ready(function () {
 
   $('#bookMe').click(function(){
     makeBooking();
-    alert ("Hi there " + user.fullName + " you have booked " + space.spaceName);
+    // alert ("Hi there " + user.fullName + " you have booked " + space.spaceName);
     window.location.href = "/user";
   });
 
