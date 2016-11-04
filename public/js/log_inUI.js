@@ -16,22 +16,22 @@ $( document ).ready(function () {
  console.log(fullName);
 
   $('#loginButton').click(function(){
-    // stop.preventDefault();
-    var loginUserName = $('#loginUserName').val();
-    var  loginPassword = $('#loginPassword').val();
-
-        var username = $('#loginUserName').val();
-        var password = $('#loginPassword').val();
-
-        if ((loginUserName == username) && (loginPassword == password)) {
-          alert ("success");
+    // // stop.preventDefault();
+    // var loginUserName = $('#loginUserName').val();
+    // var  loginPassword = $('#loginPassword').val();
+    //
+    //     var username = $('#loginUserName').val();
+    //     var password = $('#loginPassword').val();
+    //
+    //     if ((loginUserName == username) && (loginPassword == password)) {
+    //       alert ("success");
           window.location.href = "/";
-            return true;
-        }
-        else {
-            alert ("Login was unsuccessful, please check your username and password");
-            return false;
-        }
+        //     return true;
+        // }
+        // else {
+        //     alert ("Login was unsuccessful, please check your username and password");
+        //     return false;
+        // }
   });
 
 });
