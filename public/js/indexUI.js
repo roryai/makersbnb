@@ -13,6 +13,15 @@ $( document ).ready(function () {
    $(".welcome").text(fullName);
  });
 
+ $.get ('/allSpaces.json', function (data){
+   array = data.spaces;
+   for (var i = 0; i < array.length; i++){
+     space = new Space(array[i].space_name, array[i].address, array[i].desc, array[i].price, "user");
+    //  spaces.push(space);
+     addBoxes(space, i);
+   };
+ });
+
 
   function addBoxes(space, id) {
     var div = document.createElement('div'),
@@ -29,11 +38,11 @@ $( document ).ready(function () {
     $("div").last().addClass("box");
   }
 
-  (function () {
-    for (var i=0; i<spaces.length; i++) {
-      addBoxes(spaces[i], i);
-    }
-  })();
+  // (function () {
+  //   for (var i=0; i<spaces.length; i++) {
+  //     addBoxes(spaces[i], i);
+  //   }
+  // })();
 
   $("#0").click(function(){link("test");});
   $("#1").click(function(){link("test");});

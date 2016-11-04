@@ -69,6 +69,13 @@ class Makersbnb < Sinatra::Base
     { space: space }.to_json
   end
 
+  get '/allSpaces.json' do
+    headers 'Access-Control-Allow-Origin' => '*'
+    content_type :json
+    spaces = Space.all
+    { spaces: spaces }.to_json
+  end
+
   get '/user' do
     erb :user
   end
